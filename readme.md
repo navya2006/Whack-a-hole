@@ -93,8 +93,9 @@ classDiagram
     HighScoreManager ..> PlayerScore : Serializes
 ```
 
-    ##✨ Key Features
-###🎯 Polymorphic Game Objects
+## ✨ Key Features
+
+### 🎯 Polymorphic Game Objects
 The game uses an abstract HoleOccupant class. The game grid doesn't know what is in the hole, only that it can be "whacked."
 
 Mole: Standard target (+100 Points).
