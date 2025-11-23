@@ -91,3 +91,55 @@ classDiagram
     HoleOccupant <|-- Bomb : Inherits
     HoleOccupant <|-- BonusMole : Inherits
     HighScoreManager ..> PlayerScore : Serializes
+
+
+    ##✨ Key Features
+###🎯 Polymorphic Game Objects
+The game uses an abstract HoleOccupant class. The game grid doesn't know what is in the hole, only that it can be "whacked."
+
+Mole: Standard target (+100 Points).
+
+Bomb: Penalty trap (-500 Points).
+
+Bonus King: Rare high-value target (+1000 Points).
+
+###⚡ Concurrency & Thread Safety
+The game loop runs on a background thread (GameEngine), ensuring the GUI remains responsive.
+
+SwingUtilities.invokeLater: All UI updates from the game thread are safely marshaled back to the Event Dispatch Thread (EDT).
+
+### 💾 Data Persistence
+High scores aren't lost when you close the game.
+
+Uses ObjectOutputStream and ObjectInputStream to save player data to scores.dat.
+
+Implements Serializable for the PlayerScore class.
+
+### 🛡️ Exception Handling
+- HighScoreException: A custom checked exception handling file I/O errors.
+
+- InvalidGameStateException: A custom unchecked exception catching logic errors (e.g., accessing an invalid grid index).
+
+```bash
+
+WHACK-A-MOLE/
+├── resources/                  # Game Assets (Images)
+│   ├── bomb.png
+│   ├── bonus.png
+│   ├── empty.png
+│   └── mole.png
+├── src/
+│   └── whackamole/             # Source Package
+│       ├── WhackAMoleApp.java  # Main Entry Point & UI
+│       ├── GameEngine.java     # Game Loop Logic
+│       ├── GameGrid.java       # Grid Panel Logic
+│       ├── HoleOccupant.java   # Abstract Base Class
+│       ├── Mole.java           # Concrete Class
+│       ├── Bomb.java           # Concrete Class
+│       ├── BonusMole.java      # Concrete Class
+│       ├── HighScoreManager.java
+│       ├── PlayerScore.java
+│       └── [Exception Classes]
+└── scores.dat                  # Generated Save File
+
+```
