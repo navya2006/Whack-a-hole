@@ -91,7 +91,7 @@ classDiagram
     HoleOccupant <|-- Bomb : Inherits
     HoleOccupant <|-- BonusMole : Inherits
     HighScoreManager ..> PlayerScore : Serializes
-
+```
 
     ##✨ Key Features
 ###🎯 Polymorphic Game Objects
